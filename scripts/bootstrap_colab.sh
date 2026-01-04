@@ -21,13 +21,10 @@ FILES=(
   locus1_hg38_chr11_5215464_5237071_HBB.fa
   locus1_hg38_chr11_5215464_5237071_HBB.repeats.local.bed
   locus1_HBB.ind1_noHbS.reads_R1.fastq.gz
-  locus1_HBB.ind1_noHbS.truth.vcf
   locus1_HBB.ind2_HbS_carrier.reads_R1.fastq.gz
-  locus1_HBB.ind2_HbS_carrier.truth.vcf
   locus2_hg38_chr8_96243643_96263643_MTERF3.fa
   locus2_hg38_chr8_96243643_96263643_MTERF3.repeats.local.bed
   locus2_MTERF3_repeat.ind1_repeat_mix.reads_R1.fastq.gz
-  locus2_MTERF3_repeat.ind1_repeat_mix.truth.vcf
 )
 
 for f in "${FILES[@]}"; do
