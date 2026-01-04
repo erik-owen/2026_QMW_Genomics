@@ -4,7 +4,8 @@ set -euo pipefail
 echo "> Installing tools..."
 sudo apt-get -qq update
 sudo DEBIAN_FRONTEND=noninteractive apt-get -qq install -y \
-  bowtie2 samtools bcftools tabix pigz
+  bowtie2 samtools bcftools tabix pigz \
+  tree
 echo "Tools installed."
 echo
 echo "Tool versions:"
