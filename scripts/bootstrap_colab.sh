@@ -3,7 +3,8 @@ set -euo pipefail
 
 echo "Installing tools..."
 sudo apt-get -qq update
-sudo apt-get -qq install -y bowtie2 samtools bcftools tabix pigz
+sudo DEBIAN_FRONTEND=noninteractive apt-get -qq install -y \
+  bowtie2 samtools bcftools tabix pigz
 
 # echo "Downloading workshop data..."
 # mkdir -p data/loci
@@ -13,6 +14,7 @@ sudo apt-get -qq install -y bowtie2 samtools bcftools tabix pigz
 # done
 
 echo "Tool versions:"
-bowtie2 --version | head -n 1 || true
+bt2_ver="$(bowtie2 --version 2>&1 || true)"
+echo "${bt2_ver%%$'\n'*}"          # first line, no SIGPIPE
 samtools --version | head -n 1 || true
 bcftools --version | head -n 1 || true
