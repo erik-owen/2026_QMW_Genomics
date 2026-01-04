@@ -14,6 +14,7 @@ echo "${bt2_ver%%$'\n'*}"          # first line, no SIGPIPE
 samtools --version | head -n 1 || true
 bcftools --version | head -n 1 || true
 
+echo
 echo "> Downloading workshop data..."
 mkdir -p data/loci
 
