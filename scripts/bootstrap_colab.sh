@@ -4,8 +4,23 @@ set -euo pipefail
 echo "> Installing tools..."
 sudo apt-get -qq update
 sudo DEBIAN_FRONTEND=noninteractive apt-get -qq install -y \
-  bowtie2 samtools bcftools tabix pigz \
+  bowtie2 samtools bcftools tabix pigz fastqc perl \
   tree
+
+# cutadapt for TrimGalore
+python3 -m pip -q install --upgrade pip
+python3 -m pip -q install cutadapt
+
+# Download TrimGalore from GitHub
+TG_DIR="/opt/trim_galore"
+mkdir -p "${TG_DIR}"
+curl -L -o /tmp/trim_galore.tar.gz \
+  https://github.com/FelixKrueger/TrimGalore/archive/refs/heads/master.tar.gz
+tar -xzf /tmp/trim_galore.tar.gz -C "${TG_DIR}" --strip-components 1
+
+chmod +x "${TG_DIR}/trim_galore"
+ln -sf "${TG_DIR}/trim_galore" /usr/local/bin/trim_galore
+
 echo "Tools installed."
 echo
 echo "Tool versions:"
@@ -13,6 +28,10 @@ bt2_ver="$(bowtie2 --version 2>&1 || true)"
 echo "${bt2_ver%%$'\n'*}"          # first line, no SIGPIPE
 samtools --version | head -n 1 || true
 bcftools --version | head -n 1 || true
+trim_galore --version | head -n 1 || true
+cutadapt --version | head -n 1 || true
+fastqc --version | head -n 1 || true
+
 
 echo
 echo "> Downloading workshop data..."
