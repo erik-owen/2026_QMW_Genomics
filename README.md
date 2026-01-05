@@ -16,4 +16,3 @@ This prevents losing work if the session resets and ensures you can edit freely.
 ## Slides
 
 - PDF: [`slides/260105_dna_seq_alignments.pdf`](slides/260105_dna_seq_alignments.pdf)
-- PowerPoint: [`slides/260105_dna_seq_alignments.pptx`](slides/260105_dna_seq_alignments.pptx)
